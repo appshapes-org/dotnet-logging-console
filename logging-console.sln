@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.539
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppShapes.Logging.Console", "AppShapes.Logging.Console\AppShapes.Logging.Console.csproj", "{59C7F9F9-279D-4ED1-AB9C-28E1BC49F669}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppShapes.Logging.Console.Tests", "AppShapes.Logging.Console.Tests\AppShapes.Logging.Console.Tests.csproj", "{183C66E7-60A6-4A84-A0E5-27D1C5995A58}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{59C7F9F9-279D-4ED1-AB9C-28E1BC49F669}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59C7F9F9-279D-4ED1-AB9C-28E1BC49F669}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59C7F9F9-279D-4ED1-AB9C-28E1BC49F669}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59C7F9F9-279D-4ED1-AB9C-28E1BC49F669}.Release|Any CPU.Build.0 = Release|Any CPU
+		{183C66E7-60A6-4A84-A0E5-27D1C5995A58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{183C66E7-60A6-4A84-A0E5-27D1C5995A58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{183C66E7-60A6-4A84-A0E5-27D1C5995A58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{183C66E7-60A6-4A84-A0E5-27D1C5995A58}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {64B9BC6C-58C5-4899-A28E-224214D4B548}
+	EndGlobalSection
+EndGlobal
