@@ -266,9 +266,6 @@ __pycache__/
 # Mac specific file
 .DS_Store
 
-KafkaPOC/jsonSchemaFiles
-TODO
-
 */kubernetes/*/ignore/
 
 # Coverlet
