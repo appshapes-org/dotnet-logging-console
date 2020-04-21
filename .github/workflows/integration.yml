@@ -39,3 +39,8 @@ jobs:
       with:
         name: Coverage
         path: coverage-reports
+    - name: Upload
+      uses: actions/upload-artifact@v1
+      with:
+        name: Mutation
+        path: Logging.Console.Tests/StrykerOutput
