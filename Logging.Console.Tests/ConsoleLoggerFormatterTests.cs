@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Xunit;
 
-namespace AppShapes.Logging.Console.Tests
+namespace Logging.Console.Tests
 {
     public class ConsoleLoggerFormatterTests
     {
@@ -29,7 +29,7 @@ namespace AppShapes.Logging.Console.Tests
         [Fact]
         public void GetThreadIdMustReturnManagedThreadIdWhenThreadNameIsNullOrWhitespace()
         {
-            Task.Run(() => { Assert.Matches(@"^\d*$", new StubConsoleLoggerFormatter().InvokeGetThreadId()); }).Wait();
+            Task.Run(() => { Assert.Matches(@"^\d+$", new StubConsoleLoggerFormatter().InvokeGetThreadId()); }).Wait();
         }
 
         [Fact]

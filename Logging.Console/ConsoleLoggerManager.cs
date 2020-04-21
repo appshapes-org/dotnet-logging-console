@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Concurrent;
-using System.Diagnostics;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace AppShapes.Logging.Console
+namespace Logging.Console
 {
     [ProviderAlias("Console")]
     public class ConsoleLoggerManager : ILoggerProvider
@@ -22,7 +21,6 @@ namespace AppShapes.Logging.Console
             Settings = options.CurrentValue;
             Processor = processor;
             Formatter = formatter;
-            Trace.TraceInformation($"Settings: {Settings}");
         }
 
         public virtual ILogger CreateLogger(string name)

@@ -1,6 +1,6 @@
 # AppShapes.Logging.Console
 
-![](https://github.com/appshapes-org/logging-console/workflows/CI/badge.svg)
+![](https://github.com/appshapes-org/logging-console/workflows/Integration/badge.svg)
 
 ## What does this project do?
 

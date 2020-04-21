@@ -5,7 +5,7 @@ using System.Threading;
 using Microsoft.Extensions.Logging;
 using Xunit;
 
-namespace AppShapes.Logging.Console.Tests
+namespace Logging.Console.Tests
 {
     public class ConsoleLoggerTests
     {
@@ -39,6 +39,7 @@ namespace AppShapes.Logging.Console.Tests
         [InlineData(null)]
         [InlineData(" ")]
         [InlineData("")]
+        [InlineData("[null]")]
         public void LogMustNotProcessMessageWhenMessageIsNullOrWhitespaceAndExceptionIsNull(string state)
         {
             ConsoleLoggerProcessorStub processor = new ConsoleLoggerProcessorStub();

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace AppShapes.Logging.Console
+namespace Logging.Console
 {
     public class ConsoleLoggerOptions
     {
