@@ -39,6 +39,7 @@ namespace Logging.Console.Tests
         [InlineData(null)]
         [InlineData(" ")]
         [InlineData("")]
+        [InlineData("[null]")]
         public void LogMustNotProcessMessageWhenMessageIsNullOrWhitespaceAndExceptionIsNull(string state)
         {
             ConsoleLoggerProcessorStub processor = new ConsoleLoggerProcessorStub();

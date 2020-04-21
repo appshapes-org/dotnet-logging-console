@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Logging.Console
+﻿namespace Logging.Console
 {
     public class ConsoleLoggerWriter : IConsoleLoggerWriter
     {
@@ -8,12 +6,12 @@ namespace Logging.Console
         {
         }
 
-        public virtual void Write(string message, ConsoleColor? background, ConsoleColor? foreground)
+        public virtual void Write(string message)
         {
             System.Console.Write(message);
         }
 
-        public virtual void WriteLine(string message, ConsoleColor? background, ConsoleColor? foreground)
+        public virtual void WriteLine(string message)
         {
             System.Console.WriteLine(message);
         }

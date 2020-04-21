@@ -29,7 +29,7 @@ namespace Logging.Console.Tests
         [Fact]
         public void GetThreadIdMustReturnManagedThreadIdWhenThreadNameIsNullOrWhitespace()
         {
-            Task.Run(() => { Assert.Matches(@"^\d*$", new StubConsoleLoggerFormatter().InvokeGetThreadId()); }).Wait();
+            Task.Run(() => { Assert.Matches(@"^\d+$", new StubConsoleLoggerFormatter().InvokeGetThreadId()); }).Wait();
         }
 
         [Fact]

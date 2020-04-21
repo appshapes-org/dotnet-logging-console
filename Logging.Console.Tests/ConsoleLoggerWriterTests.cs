@@ -15,8 +15,8 @@ namespace Logging.Console.Tests
             {
                 StringBuilder messages = new StringBuilder();
                 System.Console.SetOut(new StringWriter(messages));
-                new ConsoleLoggerWriter().Write("Test", null, null);
-                new ConsoleLoggerWriter().WriteLine(string.Empty, null, null);
+                new ConsoleLoggerWriter().Write("Test");
+                new ConsoleLoggerWriter().WriteLine(string.Empty);
                 new ConsoleLoggerWriter().Flush();
                 Assert.Contains($"Test{Environment.NewLine}", $"{messages}");
             }

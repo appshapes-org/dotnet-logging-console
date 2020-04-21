@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
-using System.Diagnostics;
-using System.Text;
 using System.Threading;
 using Xunit;
-using ThreadState = System.Threading.ThreadState;
 
 namespace Logging.Console.Tests
 {
@@ -13,27 +10,15 @@ namespace Logging.Console.Tests
         [Fact]
         public void ConstructorMustThrowExceptionWhenConsoleLoggerWriterIsNull()
         {
-            Assert.Throws<ArgumentNullException>(() => new ConsoleLoggerProcessor(null));
+            Assert.Equal("console cannot be null (Parameter 'console')", Assert.Throws<ArgumentNullException>(() => new ConsoleLoggerProcessor(null)).Message);
         }
 
         [Fact]
         public void DisableQueueMustHandleExceptionWhenAnyExceptionOccurs()
         {
-            MemoryTraceListener listener = new MemoryTraceListener();
-            try
-            {
-                using (StubConsoleLoggerProcessor processor = new StubConsoleLoggerProcessor {Exception = new TerminateQueuingException()})
-                {
-                    Trace.Listeners.Add(listener);
-                    processor.InvokeDisableQueue();
-                    Assert.Contains("TerminateQueuingException", $"{listener.Storage}");
-                    processor.Exception = null;
-                }
-            }
-            finally
-            {
-                Trace.Listeners.Remove(listener);
-            }
+            using StubConsoleLoggerProcessor processor = new StubConsoleLoggerProcessor {Exception = new TerminateQueuingException()};
+            processor.InvokeDisableQueue();
+            processor.Exception = null;
         }
 
         [Fact]
@@ -56,60 +41,46 @@ namespace Logging.Console.Tests
         [Fact]
         public void EnqueueMustHandleInvalidOperationExceptionWhenAddToQueueThrowsInvalidOperationException()
         {
-            using (StubConsoleLoggerProcessor processor = new StubConsoleLoggerProcessor {Exception = new InvalidOperationException()})
-            {
-                Assert.True(processor.GetQueue().Count == 0);
-                processor.InvokeEnqueue("Test");
-                Assert.True(processor.GetQueue().Count == 0);
-            }
+            using StubConsoleLoggerProcessor processor = new StubConsoleLoggerProcessor {Exception = new InvalidOperationException()};
+            Assert.True(processor.GetQueue().Count == 0);
+            processor.InvokeEnqueue("Test");
+            Assert.True(processor.GetQueue().Count == 0);
+        }
+
+        [Fact]
+        public void GetProcessorThreadMustCreateBackgroundThreadWhenCalled()
+        {
+            using StubConsoleLoggerProcessor processor = new StubConsoleLoggerProcessor();
+            processor.Process("Test");
+            Assert.True(processor.GetThread().IsBackground);
+            Assert.Equal($"{nameof(ConsoleLoggerProcessor)}", processor.GetThread().Name);
         }
 
         [Fact]
         public void ProcessMessagesMustDisableQueueWhenExceptionIsCaught()
         {
-            using (StubConsoleLoggerProcessor processor = new StubConsoleLoggerProcessor {Exception = new WriteMessagesException()})
-            {
-                Assert.False(processor.IsQueueDisabled);
-                processor.InvokeProcessMessages();
-                Assert.True(processor.IsQueueDisabled);
-            }
+            using StubConsoleLoggerProcessor processor = new StubConsoleLoggerProcessor {Exception = new WriteMessagesException()};
+            Assert.False(processor.IsQueueDisabled);
+            processor.InvokeProcessMessages();
+            Assert.True(processor.IsQueueDisabled);
         }
 
         [Fact]
         public void ProcessMustNotQueueMessageWhenQueueIsNotEnabled()
         {
-            using (StubConsoleLoggerProcessor processor = new StubConsoleLoggerProcessor())
-            {
-                processor.InvokeDisableQueue();
-                processor.Process("Test");
-                Assert.True(processor.EnqueueCalled == 0);
-                Assert.True(processor.WriteMessageCalled == 1);
-            }
+            using StubConsoleLoggerProcessor processor = new StubConsoleLoggerProcessor();
+            processor.InvokeDisableQueue();
+            processor.Process("Test");
+            Assert.True(processor.EnqueueCalled == 0);
+            Assert.True(processor.WriteMessageCalled == 1);
         }
 
         [Fact]
         public void ProcessMustQueueMessageWhenQueueIsEnabled()
         {
-            using (StubConsoleLoggerProcessor processor = new StubConsoleLoggerProcessor())
-            {
-                processor.Process("Test");
-                Assert.True(processor.EnqueueCalled == 1);
-            }
-        }
-
-        private class MemoryTraceListener : TraceListener
-        {
-            public StringBuilder Storage { get; } = new StringBuilder();
-
-            public override void Write(string message)
-            {
-                Storage.Append(message);
-            }
-
-            public override void WriteLine(string message)
-            {
-                Storage.AppendLine(message);
-            }
+            using StubConsoleLoggerProcessor processor = new StubConsoleLoggerProcessor();
+            processor.Process("Test");
+            Assert.True(processor.EnqueueCalled == 1);
         }
 
         private class NullConsole : IConsoleLoggerWriter
@@ -118,11 +89,11 @@ namespace Logging.Console.Tests
             {
             }
 
-            public void Write(string message, ConsoleColor? background, ConsoleColor? foreground)
+            public void Write(string message)
             {
             }
 
-            public void WriteLine(string message, ConsoleColor? background, ConsoleColor? foreground)
+            public void WriteLine(string message)
             {
             }
         }

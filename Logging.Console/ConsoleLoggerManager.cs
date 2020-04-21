@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Concurrent;
-using System.Diagnostics;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
@@ -22,7 +21,6 @@ namespace Logging.Console
             Settings = options.CurrentValue;
             Processor = processor;
             Formatter = formatter;
-            Trace.TraceInformation($"Settings: {Settings}");
         }
 
         public virtual ILogger CreateLogger(string name)

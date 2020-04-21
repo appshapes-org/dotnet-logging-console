@@ -16,5 +16,11 @@ namespace Logging.Console.Tests
         {
             Assert.Equal(LogLevel.None, new ConsoleLoggerOptions().LogLevel);
         }
+
+        [Fact]
+        public void ToStringMustReturnExpectedValueWhenCalled()
+        {
+            Assert.Equal($"{nameof(ConsoleLoggerOptions.LogLevel)}: {LogLevel.Information}", $"{new ConsoleLoggerOptions {LogLevel = LogLevel.Information}}");
+        }
     }
 }

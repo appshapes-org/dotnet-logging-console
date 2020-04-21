@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Concurrent;
-using System.Diagnostics;
 using System.Threading;
 
 namespace Logging.Console
@@ -51,12 +50,10 @@ namespace Logging.Console
         {
             try
             {
-                Trace.TraceInformation($"{nameof(DisableQueue)} called");
                 TerminateQueuing();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Trace.TraceInformation($"[{nameof(DisableQueue)}] {ex.Message}");
             }
         }
 
@@ -73,7 +70,7 @@ namespace Logging.Console
 
         protected virtual Thread GetProcessorThread()
         {
-            return new Thread(ProcessMessages) {IsBackground = true, Name = "ConsoleLoggerProcessor"};
+            return new Thread(ProcessMessages) {IsBackground = true, Name = $"{nameof(ConsoleLoggerProcessor)}"};
         }
 
         protected virtual void HandleThreadStateException(ThreadStateException exception)
@@ -115,7 +112,7 @@ namespace Logging.Console
 
         protected virtual void WriteMessage(string message)
         {
-            Console.WriteLine(message, null, null);
+            Console.WriteLine(message);
         }
 
         protected virtual void WriteMessages()

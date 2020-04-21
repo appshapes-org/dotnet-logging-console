@@ -1,8 +1,11 @@
-﻿using Microsoft.Extensions.Logging.Console.Internal;
-
-namespace Logging.Console
+﻿namespace Logging.Console
 {
-    public interface IConsoleLoggerWriter : IConsole
+    public interface IConsoleLoggerWriter
     {
+        void Flush();
+
+        void Write(string message);
+
+        void WriteLine(string message);
     }
 }

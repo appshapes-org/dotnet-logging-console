@@ -35,3 +35,6 @@ jobs:
       with:
         name: Coverage
         path: coverage-reports
+    - name: Mutation Test
+      run: |
+        ./execute-mutation-tests.sh Logging.Console.Tests
