@@ -3,7 +3,7 @@ using System.IO;
 using System.Text;
 using Xunit;
 
-namespace AppShapes.Logging.Console.Tests
+namespace Logging.Console.Tests
 {
     public class ConsoleLoggerWriterTests
     {

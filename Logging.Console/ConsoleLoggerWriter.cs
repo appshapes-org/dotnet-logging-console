@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AppShapes.Logging.Console
+namespace Logging.Console
 {
     public class ConsoleLoggerWriter : IConsoleLoggerWriter
     {

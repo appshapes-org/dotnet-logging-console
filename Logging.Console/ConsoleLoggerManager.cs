@@ -4,7 +4,7 @@ using System.Diagnostics;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace AppShapes.Logging.Console
+namespace Logging.Console
 {
     [ProviderAlias("Console")]
     public class ConsoleLoggerManager : ILoggerProvider

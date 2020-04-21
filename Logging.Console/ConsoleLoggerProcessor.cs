@@ -3,7 +3,7 @@ using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Threading;
 
-namespace AppShapes.Logging.Console
+namespace Logging.Console
 {
     public class ConsoleLoggerProcessor : IConsoleLoggerProcessor
     {

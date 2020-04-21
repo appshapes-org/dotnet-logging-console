@@ -6,7 +6,7 @@ using System.Threading;
 using Xunit;
 using ThreadState = System.Threading.ThreadState;
 
-namespace AppShapes.Logging.Console.Tests
+namespace Logging.Console.Tests
 {
     public class ConsoleLoggerProcessorTests
     {

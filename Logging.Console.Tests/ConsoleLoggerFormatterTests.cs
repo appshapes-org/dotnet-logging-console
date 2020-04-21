@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Xunit;
 
-namespace AppShapes.Logging.Console.Tests
+namespace Logging.Console.Tests
 {
     public class ConsoleLoggerFormatterTests
     {
