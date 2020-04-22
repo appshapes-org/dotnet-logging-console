@@ -44,7 +44,7 @@ jobs:
         name: Mutation Test Coverage
         path: Logging.Console.Tests/StrykerOutput
     - name: Package
-      run: dotnet pack --include-symbols --include-source -p:SymbolPackageFormat=snupkg --nologo
+      run: dotnet pack --include-symbols --include-source -p:SymbolPackageFormat=snupkg --nologo --no-build
     - name: Publish
       run: |
         dotnet nuget push ./Logging.Console/bin/Debug/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json --skip-duplicate
