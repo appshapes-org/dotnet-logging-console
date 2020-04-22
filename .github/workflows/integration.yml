@@ -29,23 +29,23 @@ jobs:
       run: |
         dotnet test --no-restore --verbosity normal --filter Category!=System /p:CollectCoverage=true /p:CoverletOutputFormat=OpenCover /p:Exclude=\"[xunit.*]*,[*]*.Migrations.*\" /p:ExcludeByAttribute=\"Obsolete,GeneratedCodeAttribute,CompilerGeneratedAttribute\"
         dotnet tool install --global dotnet-reportgenerator-globaltool; ~/.dotnet/tools/reportgenerator \"-reports:**/*Tests*/coverage.opencover.xml\" \"-targetdir:coverage-reports\"
-    - name: Mutation Test
-      run: |
-        cd Logging.Console.Tests
-        dotnet tool restore; grep -oP -f ../stryker.project-reference.regex Logging.Console.Tests.csproj | xargs -I{} dotnet stryker --project-file={}
-    - name: Report Unit Test Coverage
+    - name: Report
       uses: actions/upload-artifact@v1
       with:
         name: Unit Test Coverage
         path: coverage-reports
-    - name: Report Mutation Test Coverage
+    - name: Mutation Test
+      run: |
+        cd Logging.Console.Tests
+        dotnet tool restore; grep -oP -f ../stryker.project-reference.regex Logging.Console.Tests.csproj | xargs -I{} dotnet stryker --project-file={}
+    - name: Report
       uses: actions/upload-artifact@v1
       with:
         name: Mutation Test Coverage
         path: Logging.Console.Tests/StrykerOutput
+    - name: Package
+      run: dotnet pack --include-symbols --include-source -p:SymbolPackageFormat=snupkg --nologo
     - name: Publish
       run: |
-        cd Logging.Console
-        dotnet pack --include-symbols --include-source -p:SymbolPackageFormat=snupkg --nologo --verbosity quiet
-        dotnet nuget push ./bin/Debug/*.nupkg -s https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET_API_KEY }}
-        dotnet nuget push ./bin/Debug/*.snupkg -s https://www.nuget.org/api/v2/symbolpackage -k ${{ secrets.NUGET_API_KEY }}
+        dotnet nuget push ./Logging.Console/bin/Debug/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json --skip-duplicate
+        dotnet nuget push ./Logging.Console/bin/Debug/*.snupkg -k ${{ secrets.NUGET_API_KEY }} -s https://www.nuget.org/api/v2/symbolpackage --skip-duplicate
