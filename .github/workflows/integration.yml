@@ -26,21 +26,27 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
     - name: Unit Test
-      run: dotnet test --no-restore --verbosity normal --filter Category!=System /p:CollectCoverage=true /p:CoverletOutputFormat=OpenCover /p:Exclude=\"[xunit.*]*,[*]*.Migrations.*\" /p:ExcludeByAttribute=\"Obsolete,GeneratedCodeAttribute,CompilerGeneratedAttribute\"
+      run: |
+        dotnet test --no-restore --verbosity normal --filter Category!=System /p:CollectCoverage=true /p:CoverletOutputFormat=OpenCover /p:Exclude=\"[xunit.*]*,[*]*.Migrations.*\" /p:ExcludeByAttribute=\"Obsolete,GeneratedCodeAttribute,CompilerGeneratedAttribute\"
+        dotnet tool install --global dotnet-reportgenerator-globaltool; ~/.dotnet/tools/reportgenerator \"-reports:**/*Tests*/coverage.opencover.xml\" \"-targetdir:coverage-reports\"
+    - name: Report
+      uses: actions/upload-artifact@v1
+      with:
+        name: Unit Test Coverage
+        path: coverage-reports
     - name: Mutation Test
+      continue-on-error: true
       run: |
         cd Logging.Console.Tests
         dotnet tool restore; grep -oP -f ../stryker.project-reference.regex Logging.Console.Tests.csproj | xargs -I{} dotnet stryker --project-file={}
     - name: Report
-      continue-on-error: true
-      run: dotnet tool install --global dotnet-reportgenerator-globaltool; ~/.dotnet/tools/reportgenerator \"-reports:**/*Tests*/coverage.opencover.xml\" \"-targetdir:coverage-reports\"
-    - name: Upload
       uses: actions/upload-artifact@v1
       with:
-        name: Coverage
-        path: coverage-reports
-    - name: Upload
-      uses: actions/upload-artifact@v1
-      with:
-        name: Mutation
+        name: Mutation Test Coverage
         path: Logging.Console.Tests/StrykerOutput
+    - name: Package
+      run: dotnet pack --include-symbols --include-source -p:SymbolPackageFormat=snupkg --nologo --no-build
+    - name: Publish
+      run: |
+        dotnet nuget push ./Logging.Console/bin/Debug/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json --skip-duplicate
+        dotnet nuget push ./Logging.Console/bin/Debug/*.snupkg -k ${{ secrets.NUGET_API_KEY }} -s https://www.nuget.org/api/v2/symbolpackage --skip-duplicate
