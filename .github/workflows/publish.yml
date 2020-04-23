@@ -1,0 +1,28 @@
+name: Integration
+
+on:
+  push:
+    branches:
+    - 'master'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+    - name: Install
+      run: dotnet restore
+    - name: Package
+      run: |
+        git clean -xdf
+        dotnet pack --include-symbols --include-source -p:SymbolPackageFormat=snupkg --nologo
+    - name: Publish
+      run: |
+        dotnet nuget push ./Logging.Console/bin/Debug/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json --skip-duplicate
+        dotnet nuget push ./Logging.Console/bin/Debug/*.snupkg -k ${{ secrets.NUGET_API_KEY }} -s https://www.nuget.org/api/v2/symbolpackage --skip-duplicate
