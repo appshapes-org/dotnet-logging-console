@@ -37,6 +37,7 @@ jobs:
     - name: Mutation Test
       continue-on-error: true
       run: |
+        git clean -xdf
         cd Logging.Console.Tests
         dotnet tool restore; grep -oP -f ../stryker.project-reference.regex Logging.Console.Tests.csproj | xargs -I{} dotnet stryker --project-file={}
     - name: Report
