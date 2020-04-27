@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
-        <PackageId>AppShapes.Research.Logging.Console</PackageId>
+        <PackageId>AppShapes.Logging.Console</PackageId>
         <Authors>Rjae Easton</Authors>
         <Company>AppShapes</Company>
         <Description>AppShapes.Logging.Console is a Microsoft.Extensions.Logging.ILoggerProvider that streams log events to standard output. Default behaviors such as formatting, properties, and processing may be replaced by injecting your own interface implementation.</Description>
