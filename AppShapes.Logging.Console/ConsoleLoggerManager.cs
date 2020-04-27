@@ -3,7 +3,7 @@ using System.Collections.Concurrent;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace Logging.Console
+namespace AppShapes.Logging.Console
 {
     [ProviderAlias("Console")]
     public class ConsoleLoggerManager : ILoggerProvider

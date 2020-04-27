@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Logging.Console
+namespace AppShapes.Logging.Console
 {
     public interface IConsoleLoggerProcessor : IDisposable
     {

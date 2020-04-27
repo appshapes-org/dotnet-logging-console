@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Configuration;
 using Microsoft.Extensions.Options;
 
-namespace Logging.Console
+namespace AppShapes.Logging.Console
 {
     public static class ConsoleLoggerExtensions
     {

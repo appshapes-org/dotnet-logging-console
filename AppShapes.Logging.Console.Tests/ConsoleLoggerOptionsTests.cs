@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using Xunit;
 
-namespace Logging.Console.Tests
+namespace AppShapes.Logging.Console.Tests
 {
     public class ConsoleLoggerOptionsTests
     {

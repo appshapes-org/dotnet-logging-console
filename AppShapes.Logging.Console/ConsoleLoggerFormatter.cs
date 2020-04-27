@@ -2,7 +2,7 @@
 using System.Threading;
 using Microsoft.Extensions.Logging;
 
-namespace Logging.Console
+namespace AppShapes.Logging.Console
 {
     public class ConsoleLoggerFormatter : IConsoleLoggerFormatter
     {
