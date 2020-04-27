@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Logging.Configuration;
 using Microsoft.Extensions.Options;
 
-namespace Logging.Console
+namespace AppShapes.Logging.Console
 {
     public class ConsoleLoggerOptionsSetup : ConfigureFromConfigurationOptions<ConsoleLoggerOptions>
     {

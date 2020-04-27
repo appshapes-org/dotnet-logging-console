@@ -37,10 +37,10 @@ jobs:
     - name: Mutation Test
       continue-on-error: true
       run: |
-        cd Logging.Console.Tests
-        dotnet tool restore; grep -oP -f ../stryker.project-reference.regex Logging.Console.Tests.csproj | xargs -I{} dotnet stryker --project-file={}
+        cd AppShapes.Logging.Console.Tests
+        dotnet tool restore; grep -oP -f ../stryker.project-reference.regex AppShapes.Logging.Console.Tests.csproj | xargs -I{} dotnet stryker --project-file={}
     - name: Report
       uses: actions/upload-artifact@v1
       with:
         name: Mutation Test Coverage
-        path: Logging.Console.Tests/StrykerOutput
+        path: AppShapes.Logging.Console.Tests/StrykerOutput

@@ -1,4 +1,4 @@
-﻿namespace Logging.Console
+﻿namespace AppShapes.Logging.Console
 {
     public class ConsoleLoggerWriter : IConsoleLoggerWriter
     {

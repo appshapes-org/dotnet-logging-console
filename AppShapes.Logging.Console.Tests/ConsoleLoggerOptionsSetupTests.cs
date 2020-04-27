@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging.Configuration;
 using Microsoft.Extensions.Primitives;
 using Xunit;
 
-namespace Logging.Console.Tests
+namespace AppShapes.Logging.Console.Tests
 {
     public class ConsoleLoggerOptionsSetupTests
     {

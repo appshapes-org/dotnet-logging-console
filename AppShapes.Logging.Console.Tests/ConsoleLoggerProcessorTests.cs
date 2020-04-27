@@ -3,7 +3,7 @@ using System.Collections.Concurrent;
 using System.Threading;
 using Xunit;
 
-namespace Logging.Console.Tests
+namespace AppShapes.Logging.Console.Tests
 {
     public class ConsoleLoggerProcessorTests
     {

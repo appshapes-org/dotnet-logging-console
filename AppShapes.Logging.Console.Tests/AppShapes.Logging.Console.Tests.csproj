@@ -20,7 +20,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Logging.Console\Logging.Console.csproj" />
+        <ProjectReference Include="..\AppShapes.Logging.Console\AppShapes.Logging.Console.csproj" />
     </ItemGroup>
 
 </Project>
