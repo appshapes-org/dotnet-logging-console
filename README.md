@@ -1,6 +1,6 @@
 # AppShapes.Logging.Console
 
-![](https://github.com/appshapes-org/logging-console/workflows/Integration/badge.svg)
+![](https://github.com/appshapes-org/dotnet-logging-console/workflows/Integration/badge.svg)
 
 ## What does this project do?
 
@@ -17,7 +17,7 @@ To use AppShapes.Logging.Console you must install the [NuGet package](https://nu
 ### Installation
 
 ```powershell
-Install-Package AppShapes.Logging.Console -ProjectName <Startup Project Name>
+Install-Package AppShapes.Logging.Console -ProjectName <Project Name>
 ```
 
 ### Configuration
@@ -42,7 +42,7 @@ AppShapes.Logging.Console pull requests are checked for code coverage. You can r
 dotnet test
 ```
 
-AppShapes.Logging.ConsoleTests integrates with [Coverlet](https://github.com/tonerdo/coverlet) so if you have it installed you can generate coverage reports. For example:
+AppShapes.Logging.Console integrates with [Coverlet](https://github.com/tonerdo/coverlet) so if you have it installed you can generate coverage reports. For example:
 
 ```bash
 dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=OpenCover /p:Exclude=\"[xunit.*]*\"  /p:ExcludeByAttribute=\"Obsolete,GeneratedCodeAttribute,CompilerGeneratedAttribute\"
@@ -62,7 +62,7 @@ dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=OpenCover /p:Exclude
 
 ### Issues
 
-* AppShapes.Logging.Console [Issues](https://github.com/appshapes-org/logging-console/issues)
+* AppShapes.Logging.Console [Issues](https://github.com/appshapes-org/dotnet-logging-console/issues)
 
 ## Contributing
 

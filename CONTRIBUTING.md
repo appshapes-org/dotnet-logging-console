@@ -1,13 +1,13 @@
-# Contributing to Logging.Console
+# Contributing to AppShapes.Logging.Console
 
-Open source is all about community, so welcome and thank you for your interest in contributing to Logging.Console!
+Open source is all about community, so welcome and thank you for your interest in contributing to AppShapes.Logging.Console!
 
 ## Improvements and Fixes
 
-Changes to Logging.Console are tracked via [GitHub][issue_list]. When creating an issue, the template will ask for:
+Changes to AppShapes.Logging.Console are tracked via [GitHub][issue_list]. When creating an issue, the template will ask for:
 
 * Short summary of the issue as a title
-* Version of Logging.Console affected
+* Version of AppShapes.Logging.Console affected
 * Detailed description of the issue
 * Code examples of the issue
 
@@ -23,9 +23,9 @@ Changes to Logging.Console are tracked via [GitHub][issue_list]. When creating a
 
 Please feel free to reach out to the community:
 
- * [Stack Overflow](http://stackoverflow.com/questions/tagged/loggingconsole)
- * [GitHub](https://github.com/appshapes-org/logging-console/issues)
+ * [Stack Overflow](http://stackoverflow.com/questions/tagged/dotnetloggingconsole)
+ * [GitHub](https://github.com/appshapes-org/dotnet-logging-console/issues)
 
 ## Code of Conduct
 
-Please follow Logging.Console [Code of Conduct](CODE_OF_CONDUCT.md).
+Please follow AppShapes.Logging.Console [Code of Conduct](CODE_OF_CONDUCT.md).

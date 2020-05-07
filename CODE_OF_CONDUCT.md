@@ -1,4 +1,4 @@
-# Logging.Console Code of Conduct
+# AppShapes.Logging.Console Code of Conduct
 
 ## Pledge
 
