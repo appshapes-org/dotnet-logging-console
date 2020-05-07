@@ -6,8 +6,8 @@
         <Authors>Rjae Easton</Authors>
         <Company>AppShapes</Company>
         <Description>AppShapes.Logging.Console is a Microsoft.Extensions.Logging.ILoggerProvider that streams log events to standard output. Default behaviors such as formatting, properties, and processing may be replaced by injecting your own interface implementation.</Description>
-        <PackageReleaseNotes>Prefix projects and folders with AppShapes</PackageReleaseNotes>
-        <Version>2.0.0</Version>
+        <PackageReleaseNotes>Complete the renaming</PackageReleaseNotes>
+        <Version>2.0.1</Version>
     </PropertyGroup>
 
     <ItemGroup>
